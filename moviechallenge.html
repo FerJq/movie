@@ -5,32 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Cinema</title>
+    <title>FjS Cinema</title>
     <style>
       body {
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div>
-        <nav></nav>
+    <div class="flex flex-col">
+      <div id="navbar">
+        <nav>
+          <ul>
+            <li>FjS Cinema</li>
+            <li>Explore</li>
+            <li>Category</li>
+            <li></li>
+            <li></li>
+          </ul>
+        </nav>
       </div>
-      <div>
-        <div id="category-title">
-          <h3>Discover <strong id="category-type">Fiction</strong></h3>
+      <div class="w-full flex flex-row justify-between" id="categories">
+        <div class="" id="category-title">
+          <h3 class="">Discover <strong id="category-type">Fiction</strong></h3>
         </div>
-        <div>
-          <select name="category" id="category">
+        <div class="">
+          <select name="category" id="category-selection">
             <option value="fantasy">Fantasy</option>
-            <option value="science">Science Fiction</option>
-            <option value="drama">Drama</option>
+            <option value="science">Action</option>
+            <option value="adventure">Adventure</option>
             <option value="romance">Romance</option>
             <option value="horror">Horror</option>
+            <option value="drama">Drama</option>
           </select>
         </div>
       </div>
     </div>
-    <script></script>
+    <script>
+      const url =
+        'https://online-movie-database.p.rapidapi.com/auto-complete?q=romance';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key':
+            '8f7e390fb4msh1a60784d6969a9ep1a49d5jsne71b2a788436',
+          'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
+        },
+      };
+
+      fetch(url, options).then((response) => response.json()).then(showMovies => {
+
+      });
+    </script>
   </body>
 </html>
