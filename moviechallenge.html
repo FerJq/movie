@@ -44,7 +44,7 @@
         background-position: center;
         color: white;
         margin: 0 auto;
-        padding: 0px 140px;
+        padding: 10px 140px;
       }
 
       /*NavBar*/
@@ -59,6 +59,17 @@
       }
       .hamburger {
         display: none;
+      }
+
+      img {
+        position: relative;
+        left: 40px;
+        z-index: 1;
+      }
+
+      iframe {
+        position: relative;
+        right: 250px;
       }
 
       /*Custom*/
@@ -202,7 +213,7 @@
         }
 
         header {
-          padding: 0px 80px;
+          padding: 10px 80px;
         }
 
         .hamburger {
@@ -218,7 +229,7 @@
 
       @media screen and (max-width: 650px) {
         header {
-          padding: 0px 60px;
+          padding: 10px 60px;
         }
         .section__padding {
           padding: 4rem 2rem;
@@ -235,7 +246,7 @@
 
       @media screen and (max-width: 450px) {
         header {
-          padding: 0px 20px;
+          padding: 10px 20px;
         }
         .p__opensans {
           font-size: 12px;
@@ -277,11 +288,22 @@
       </div>
       <header>
         <div class="app__wrapper">
-          <div class="app__wrapper_img app__wrapper_img-reverse">
+          <div class="app__wrapper_img">
             <img
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/033/original/png.png?1686367087"
               alt=""
             />
+            <div>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/g_Q5fSvDak8"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
           <div class="app__wrapper_info">
             <h3 class="p__cormorant">COMING SOONG...</h3>
