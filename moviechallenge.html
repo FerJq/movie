@@ -7,42 +7,301 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>FjS Cinema</title>
     <style>
-      body {
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+      :root {
+        --font-base: 'Cormorant Upright', serif;
+        --font-alt: 'Open Sans', sans-serif;
+
+        --color-golden: #dcca87;
+        --color-black: #0c0c0c;
+        --color-gray: #545454;
+        --color-crimson: #f5efdb;
+        --color-grey: #aaaaaa;
+        --color-white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: unset;
+        text-decoration: none;
+      }
+
+      header {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/026/original/download.png?1686361417');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        margin: 0 auto;
+        padding: 0px 140px;
+      }
+
+      /*NavBar*/
+      ul {
+        align-items: center;
+        max-width: 100%;
+      }
+      .nav-bar {
+        color: var(--color-golden);
+        background-color: #000000;
+        padding: 1rem;
+      }
+      .hamburger {
+        display: none;
+      }
+
+      /*Custom*/
+      .section__padding {
+        padding: 4rem 6rem;
+      }
+
+      .flex__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .app__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .app__wrapper_info {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .app__wrapper_img {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-left: 2rem;
+      }
+
+      .app__wrapper_img-reverse {
+        justify-content: flex-start;
+        margin-right: 2rem;
+      }
+
+      .app__wrapper_img img {
+        width: 80%;
+      }
+
+      .custom__button {
+        background-color: var(--color-crimson);
+        color: var(--color-crimson);
+        font-family: var(--font-base);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 28px;
+        font-size: 16px;
+        padding: 0.5rem 1.5rem;
+        border-radius: 1px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .p__cormorant {
+        font-family: var(--font-base);
+        color: var(--color-white);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: capitalize;
+        font-feature-settings: 'tnum' on, 'lnum' on;
+        line-height: 29.9px;
+        font-size: 18px;
+      }
+
+      .p__opensans {
+        font-family: var(--font-alt);
+        color: var(--color-white);
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        text-transform: capitalize;
+        line-height: 28px;
+        font-size: 16px;
+      }
+
+      .headtext__cormorant {
+        font-family: var(--font-base);
+        color: var(--color-golden);
+        font-size: 32px;
+        letter-spacing: 0.04em;
+        text-transform: capitalize;
+        font-weight: 700;
+      }
+
+      .spoon__img {
+        width: 45px;
+      }
+
+      @media screen and (min-width: 2000px) {
+        .custom__button,
+        .p__cormorant {
+          font-size: 37px;
+          line-height: 67px;
+        }
+
+        .p__opensans {
+          font-size: 30px;
+          line-height: 50px;
+        }
+
+        .headtext__cormorant {
+          font-size: 150px;
+          line-height: 210px;
+        }
+
+        .spoon__img {
+          width: 80px;
+        }
+      }
+
+      @media screen and (max-width: 1150px) {
+        .app__wrapper {
+          flex-direction: column-reverse;
+        }
+
+        .app__wrapper_img {
+          margin: 5rem 0 0 0;
+        }
+
+        .app__wrapper_img-reverse {
+          margin: 0 0 5rem 0;
+        }
+
+        .app__wrapper_img img {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 850px) {
+        .section__padding {
+          padding: 4rem;
+        }
+
+        header {
+          padding: 0px 80px;
+        }
+
+        .hamburger {
+          text-align: end;
+          display: block;
+          cursor: pointer;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 650px) {
+        header {
+          padding: 0px 60px;
+        }
+        .section__padding {
+          padding: 4rem 2rem;
+        }
+
+        .p__cormorant {
+          font-size: 21px;
+        }
+
+        .p__opensans {
+          font-size: 14px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        header {
+          padding: 0px 20px;
+        }
+        .p__opensans {
+          font-size: 12px;
+        }
+
+        .p__cormorant {
+          font-size: 19px;
+        }
+
+        .headtext__cormorant {
+          font-size: 45px;
+          line-height: 70px;
+        }
       }
     </style>
   </head>
-  <body>
-    <div class="flex flex-col">
-      <div id="navbar">
-        <nav>
-          <ul>
-            <li>FjS Cinema</li>
-            <li>Explore</li>
-            <li>Category</li>
-            <li></li>
-            <li></li>
+  <body class="bg-">
+    <div id="container">
+      <div class="nav-bar">
+        <div class="hamburger">
+          <i class="fa-solid fa-bars text-[30px]" style="color: #fff"></i>
+        </div>
+        <nav class="">
+          <ul class="flex flex-row justify-between">
+            <li class="">
+              <a href="#how">HOW IT WORKS</a>
+            </li>
+            <li class="">
+              <a href="#start">START PLANNING</a>
+            </li>
+            <li class=""><a href="#blog">BLOG</a></li>
+            <li class=""><a href="#contact">CONTACT</a></li>
+            <div class="travel_navbar-sign">
+              <button type="button" class="custom__button">LOGIN</button>
+              <button type="button" class="custom__button">SINGUP</button>
+            </div>
           </ul>
         </nav>
       </div>
-      <div class="w-full flex flex-row justify-between" id="categories">
-        <div class="" id="category-title">
-          <h3 class="">Discover <strong id="category-type">Fiction</strong></h3>
+      <header>
+        <div class="app__wrapper">
+          <div class="app__wrapper_img app__wrapper_img-reverse">
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/033/original/png.png?1686367087"
+              alt=""
+            />
+          </div>
+          <div class="app__wrapper_info">
+            <h3 class="p__cormorant">COMING SOONG...</h3>
+            <h1 class="headtext__cormorant">TRAIN TO BUSAN: PENINSULA</h1>
+            <p class="p__opensans mt-[5px]">
+              A zombie outbreak occurs in South Korea, where the government is
+              overwhelmed in a day. Korea Marine Captain Jung-seok drives his
+              family members to a ship. On the way, he encounters a couple with
+              a young daughter, but he refuses their pleas for help as the man
+              is bleeding. Jung-seok's family board a ship where an infected man
+              turns into a zombie and infects several people in a cabin,
+              including unfortunately Jung-seok's nephew Dong-hwan.
+            </p>
+          </div>
         </div>
-        <div class="">
-          <select name="category" id="category-selection">
-            <option value="fantasy">Fantasy</option>
-            <option value="science">Action</option>
-            <option value="adventure">Adventure</option>
-            <option value="romance">Romance</option>
-            <option value="horror">Horror</option>
-            <option value="drama">Drama</option>
-          </select>
-        </div>
-      </div>
+      </header>
     </div>
     <script>
       const url =
-        'https://online-movie-database.p.rapidapi.com/auto-complete?q=romance';
+        'https://online-movie-database.p.rapidapi.com/auto-complete?q=horror';
       const options = {
         method: 'GET',
         headers: {
@@ -52,9 +311,49 @@
         },
       };
 
-      fetch(url, options).then((response) => response.json()).then(showMovies => {
+      fetch(url, options)
+        .then((response) => response.json())
+        .then((showMovies) => {
+          const movies = showMovies.d;
 
+          movies.map((m, i) => {
+            const name = m.l;
+            const posterImage = m.i.imageUrl;
+            const subtitle = m.s;
+            console.log(name);
+          });
+        });
+
+      // Navbar
+
+      const mainMenu = document.querySelector('.mainMenu');
+      const closeMenu = document.querySelector('.closeMenu');
+      const openMenu = document.querySelector('.openMenu');
+      const menu_items = document.querySelectorAll('nav .mainMenu li a');
+
+      openMenu.addEventListener('click', show);
+      closeMenu.addEventListener('click', close);
+
+      // close menu when you click on a menu item
+      menu_items.forEach((item) => {
+        item.addEventListener('click', function () {
+          close();
+        });
       });
+
+      function show() {
+        mainMenu.style.display = 'flex';
+        mainMenu.style.top = '0';
+      }
+      function close() {
+        mainMenu.style.top = '-100%';
+      }
+
+      //Kits
     </script>
+    <script
+      src="https://kit.fontawesome.com/12e117d926.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
