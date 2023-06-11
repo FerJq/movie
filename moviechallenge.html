@@ -128,7 +128,6 @@
       }
 
       .custom__button {
-        background-color: var(--color-crimson);
         color: var(--color-crimson);
         font-family: var(--font-base);
         font-weight: 700;
@@ -136,6 +135,20 @@
         line-height: 28px;
         font-size: 16px;
         padding: 0.5rem 1.5rem;
+        border-radius: 1px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .custom__category {
+        color: var(--color-crimson);
+        font-family: var(--font-base);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 28px;
+        font-size: 32px;
+        padding: 1rem 2rem;
         border-radius: 1px;
         border: none;
         outline: none;
@@ -341,7 +354,7 @@
       </header>
       <iframe
         loop="true"
-        class="w-[100%] mt-[20px] h-[400px]"
+        class="w-[100%] mt-[20px] h-[500px]"
         src="https://www.youtube.com/embed/g_Q5fSvDak8?autoplay=1"
         title="YouTube video player"
         frameborder="0"
@@ -354,14 +367,25 @@
             DISCOVER
             <strong class="capitalize" id="category-title">HORROR</strong>
           </h3>
-          <div id="movies-categories">
-            <div id="categories"></div>
+          <div id="movies-categories" class="mt-[20px]">
+            <div id="categories" class="fixed"></div>
             <div id="layout"></div>
           </div>
         </div>
       </main>
     </div>
     <script>
+      let category = '';
+      // content
+
+      let bt_categories = ['drama', 'romance', 'horror', 'comedy', 'fiction'];
+      let categories = document.getElementById('movies-categories');
+      bt_categories.map((category) => {
+        return (categories.innerHTML += `<div class="max-w-[250px]">
+          <button value='${category}' class="custom__category mt-[40px]">${category}</button>
+          </div> `);
+      });
+
       const url =
         'https://online-movie-database.p.rapidapi.com/auto-complete?q=horror';
       const options = {
@@ -382,7 +406,10 @@
             const name = m.l;
             const posterImage = m.i.imageUrl;
             const subtitle = m.s;
-            console.log(name);
+            
+            let layout = document.getElementById('layout')
+            return layout.innerHTML += ``
+
           });
         });
 
