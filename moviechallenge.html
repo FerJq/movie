@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <title>FjS Cinema</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
@@ -380,38 +386,38 @@
 
       let bt_categories = ['drama', 'romance', 'horror', 'comedy', 'fiction'];
       let categories = document.getElementById('movies-categories');
+      bt_category_value = 'horror';
+      console.log(bt_category_value);
       bt_categories.map((category) => {
         return (categories.innerHTML += `<div class="max-w-[250px]">
-          <button value='${category}' class="custom__category mt-[40px]">${category}</button>
+          <button id='${category}' value='${category}' class="custom__category mt-[40px]">${category}</button>
           </div> `);
+
+        bt_category = document.getElementById(`${category}`);
+        console.log(bt_category);
+        bt_category.onclick((e) => {
+          e.preventDefault();
+          bt_category_value = bt_category.value;
+          console.log(bt_category_value);
+        });
       });
 
-      const url =
-        'https://online-movie-database.p.rapidapi.com/auto-complete?q=horror';
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key':
-            '8f7e390fb4msh1a60784d6969a9ep1a49d5jsne71b2a788436',
-          'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com',
-        },
-      };
+      let apiKey = '21cea9f7';
+      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=horror`;
+      axios.get(apiURL).then((r) => {
+        console.log(r.data.Search);
 
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((showMovies) => {
-          const movies = showMovies.d;
-
-          movies.map((m, i) => {
-            const name = m.l;
-            const posterImage = m.i.imageUrl;
-            const subtitle = m.s;
-            
-            let layout = document.getElementById('layout')
-            return layout.innerHTML += ``
-
-          });
+        const movieArray = r.data.Search;
+        movieArray.map((serie, i) => {
+          const name = serie.Title;
+          const poster = serie.Poster;
+          const Type = serie.Type;
+          const Year = serie.Year;
+          const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`
+          let layout = document.getElementById('layout');
+          return (layout.innerHTML += movieLayout);
         });
+      });
 
       // Navbar
       hamburger = document.querySelector('.hamburger');
