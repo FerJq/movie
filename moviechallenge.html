@@ -87,15 +87,48 @@
         transition: 0.5s ease-in;
       }
 
+      /* LAYOUT */
+      #movies-categories {
+      }
+
+      #layout {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      #layout li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #ffffff;
+      }
+
+      #layout li img {
+        max-width: 300px;
+        border-radius: 12px;
+      }
+
+      #layout li h2 {
+        font-weight: 700;
+        color: black;
+        font-size: 1em;
+        padding: 15px 10px 0;
+        margin-top: auto;
+      }
+
+      #layout li h6 {
+        font-weight: 900;
+        text-transform: capitalize;
+      }
       /*Custom*/
       .section__padding {
         padding: 4rem 6rem;
-      }
-
-      .flex__center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
 
       .app__wrapper {
@@ -413,7 +446,7 @@
           const poster = serie.Poster;
           const Type = serie.Type;
           const Year = serie.Year;
-          const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`
+          const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`;
           let layout = document.getElementById('layout');
           return (layout.innerHTML += movieLayout);
         });
