@@ -454,10 +454,10 @@
       let btns_ = document.querySelectorAll('.btns');
       btns_.forEach(function (i) {
         i.addEventListener('click', function (e) {
-           fetchingCategories(i.value);
           e.preventDefault();
           title_category = i.value;
           title.innerHTML = title_category;
+          fetchingCategories(i.value);
         });
       });
 
@@ -466,10 +466,12 @@
       function fetchingCategories(x) {
         let apiKey = '21cea9f7';
         let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${x}`;
+        layout.innerHTML = '';
         axios.get(apiURL).then(fetchingData);
       }
 
       //API  https://www.omdbapi.com
+      let layout = document.getElementById('layout');
       function fetchingData(r) {
         console.log(r.data.Search);
 
@@ -480,7 +482,6 @@
           const Type = serie.Type;
           const Year = serie.Year;
           const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`;
-          let layout = document.getElementById('layout');
           return (layout.innerHTML += movieLayout);
         });
       }
