@@ -424,35 +424,53 @@
       // content & categories
 
       let bt_categories = [
-        'drama',
-        'romance',
-        'horror',
-        'comedy',
-        'fiction',
-        'adventure',
-        'crime',
-        'fantasy',
-        'animation',
-        'thriller',
-        'western',
+        { name: 'Documentary' },
+        { name: 'Fantasy' },
+        { name: 'Drama' },
+        { name: 'Crime' },
+        { name: 'Action' },
+        { name: 'Comedy' },
+        { name: 'Fiction' },
+        { name: 'Horror' },
+        { name: 'Mystery' },
+        { name: 'Animation' },
+        { name: 'Romance' },
+        { name: 'Disaster' },
+        { name: 'Fashion' },
+        { name: 'Western' },
+        { name: 'Thriller' },
       ];
 
-      console.log;
       let title = document.getElementById('category-title');
       let categories = document.getElementById('categories');
-      bt_category_value = 'horror';
-      console.log(bt_category_value);
+
       bt_categories.map((category) => {
         return (categories.innerHTML += `<div class="bt-movies-categories">
-          <button id='${category}' value='${category}' class="custom__button mt-[40px]" onclick='getValue()'>${category}</button>
+          <button id='${category.name}'  value='${category.name}' class="custom__button mt-[40px] btns">${category.name}</button>
           </div> `);
       });
 
-      //API  https://www.omdbapi.com
+      // Getting value button
+      let btns_ = document.querySelectorAll('.btns');
+      btns_.forEach(function (i) {
+        i.addEventListener('click', function (e) {
+           fetchingCategories(i.value);
+          e.preventDefault();
+          title_category = i.value;
+          title.innerHTML = title_category;
+        });
+      });
 
-      let apiKey = '21cea9f7';
-      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=fantasy`;
-      axios.get(apiURL).then((r) => {
+      //Fetching Categories Data
+
+      function fetchingCategories(x) {
+        let apiKey = '21cea9f7';
+        let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${x}`;
+        axios.get(apiURL).then(fetchingData);
+      }
+
+      //API  https://www.omdbapi.com
+      function fetchingData(r) {
         console.log(r.data.Search);
 
         const movieArray = r.data.Search;
@@ -465,7 +483,11 @@
           let layout = document.getElementById('layout');
           return (layout.innerHTML += movieLayout);
         });
-      });
+      }
+
+      let apiKey = '21cea9f7';
+      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=fantasy`;
+      axios.get(apiURL).then(fetchingData);
 
       // Navbar
       hamburger = document.querySelector('.hamburger');
