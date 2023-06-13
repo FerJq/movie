@@ -84,11 +84,24 @@
       button:hover {
         color: white;
         box-shadow: 1px 1px 1px white;
+        padding: 10px;
         transition: 0.5s ease-in;
       }
 
       /* LAYOUT */
+      .bt-movies-categories {
+        max-width: 250px;
+        max-height: 150px;
+        border-bottom: 1px solid #dcca87;
+      }
+
+      .bt-movies-categories button {
+        text-transform: uppercase;
+      }
+
       #movies-categories {
+        display: flex;
+        flex-direction: row;
       }
 
       #layout {
@@ -100,6 +113,7 @@
       #layout li {
         display: flex;
         flex-direction: column;
+        flex: 1;
         align-items: center;
         list-style: none;
         margin: 10px;
@@ -118,13 +132,19 @@
         font-weight: 700;
         color: black;
         font-size: 1em;
-        padding: 15px 10px 0;
+        padding: 5px 10px 0;
         margin-top: auto;
       }
 
       #layout li h6 {
         font-weight: 900;
         text-transform: capitalize;
+      }
+
+      #categories {
+        width: 10%;
+        display: flex;
+        flex-direction: column;
       }
       /*Custom*/
       .section__padding {
@@ -174,20 +194,6 @@
         line-height: 28px;
         font-size: 16px;
         padding: 0.5rem 1.5rem;
-        border-radius: 1px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-
-      .custom__category {
-        color: var(--color-crimson);
-        font-family: var(--font-base);
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        line-height: 28px;
-        font-size: 32px;
-        padding: 1rem 2rem;
         border-radius: 1px;
         border: none;
         outline: none;
@@ -400,43 +406,52 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-      <main class="section__padding">
+      <main class="">
         <div id="main-container">
           <h3 class="p__cormorant text-[25px] border-l-4 border-yellow-200">
             DISCOVER
             <strong class="capitalize" id="category-title">HORROR</strong>
           </h3>
           <div id="movies-categories" class="mt-[20px]">
-            <div id="categories" class="fixed"></div>
-            <div id="layout"></div>
+            <div id="categories" class=""></div>
+            <div id="layout" class="p-[30px]"></div>
           </div>
         </div>
       </main>
     </div>
     <script>
       let category = '';
-      // content
+      // content & categories
 
-      let bt_categories = ['drama', 'romance', 'horror', 'comedy', 'fiction'];
-      let categories = document.getElementById('movies-categories');
+      let bt_categories = [
+        'drama',
+        'romance',
+        'horror',
+        'comedy',
+        'fiction',
+        'adventure',
+        'crime',
+        'fantasy',
+        'animation',
+        'thriller',
+        'western',
+      ];
+
+      console.log;
+      let title = document.getElementById('category-title');
+      let categories = document.getElementById('categories');
       bt_category_value = 'horror';
       console.log(bt_category_value);
       bt_categories.map((category) => {
-        return (categories.innerHTML += `<div class="max-w-[250px]">
-          <button id='${category}' value='${category}' class="custom__category mt-[40px]">${category}</button>
+        return (categories.innerHTML += `<div class="bt-movies-categories">
+          <button id='${category}' value='${category}' class="custom__button mt-[40px]" onclick='getValue()'>${category}</button>
           </div> `);
-
-        bt_category = document.getElementById(`${category}`);
-        console.log(bt_category);
-        bt_category.onclick((e) => {
-          e.preventDefault();
-          bt_category_value = bt_category.value;
-          console.log(bt_category_value);
-        });
       });
 
+      //API  https://www.omdbapi.com
+
       let apiKey = '21cea9f7';
-      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=horror`;
+      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=fantasy`;
       axios.get(apiURL).then((r) => {
         console.log(r.data.Search);
 
