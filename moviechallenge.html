@@ -83,20 +83,22 @@
 
       button:hover {
         color: white;
-        box-shadow: 1px 1px 1px white;
-        padding: 10px;
+
         transition: 0.5s ease-in;
       }
 
       /* LAYOUT */
       .bt-movies-categories {
-        max-width: 250px;
+        max-width: 200px;
         max-height: 150px;
         border-bottom: 1px solid #dcca87;
       }
 
       .bt-movies-categories button {
+        border-radius: 10px;
         text-transform: uppercase;
+
+        width: 100%;
       }
 
       #movies-categories {
@@ -264,6 +266,16 @@
         .app__wrapper_img img {
           width: 100%;
         }
+
+        #movies-categories {
+          flex-direction: column;
+        }
+
+        #categories {
+          flex-direction: row;
+          width: 100%;
+          overflow-x: auto;
+        }
       }
 
       @media screen and (max-width: 850px) {
@@ -345,6 +357,14 @@
           line-height: 70px;
         }
       }
+
+      ::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-golden);
+      }
     </style>
   </head>
   <body class="bg-black">
@@ -399,7 +419,7 @@
       </header>
       <iframe
         loop="true"
-        class="w-[100%] mt-[20px] h-[500px]"
+        class="w-[100%] mt-[20px] h-[700px]"
         src="https://www.youtube.com/embed/g_Q5fSvDak8?autoplay=1"
         title="YouTube video player"
         frameborder="0"
@@ -414,7 +434,7 @@
           </h3>
           <div id="movies-categories" class="mt-[20px]">
             <div id="categories" class=""></div>
-            <div id="layout" class="p-[30px]"></div>
+            <div id="layout" class="p-[10px]"></div>
           </div>
         </div>
       </main>
@@ -424,7 +444,6 @@
       // content & categories
 
       let bt_categories = [
-        { name: 'Documentary' },
         { name: 'Fantasy' },
         { name: 'Drama' },
         { name: 'Crime' },
@@ -446,7 +465,7 @@
 
       bt_categories.map((category) => {
         return (categories.innerHTML += `<div class="bt-movies-categories">
-          <button id='${category.name}'  value='${category.name}' class="custom__button mt-[40px] btns">${category.name}</button>
+          <button id='${category.name}'  value='${category.name}' class="custom__button mt-[10px] btns">${category.name}</button>
           </div> `);
       });
 
