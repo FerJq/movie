@@ -721,7 +721,7 @@
       // Getting categories value button
       let btns_ = document.querySelectorAll('.btns');
       btns_.forEach(function (i) {
-        i.addEventListener('click', function (r) {
+        i.addEventListener('click', function (e) {
           e.preventDefault();
           title_category = i.value;
           title.innerHTML = title_category;
