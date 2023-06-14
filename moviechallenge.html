@@ -77,6 +77,7 @@
       }
 
       a:hover {
+        cursor: pointer;
         box-shadow: 0px 1px 0px rgb(255, 255, 255);
         transition: 0.5s ease-in;
       }
@@ -91,13 +92,19 @@
       .bt-movies-categories {
         max-width: 200px;
         max-height: 150px;
-        border-bottom: 1px solid #dcca87;
+        border-bottom: 3px solid #d9b11f;
+        border-radius: 20px;
+        transition: all 200ms ease-in;
+      }
+
+      .bt-movies-categories:hover {
+        filter: brightness(200%);
       }
 
       .bt-movies-categories button {
+        background-color: rgb(54, 51, 51);
         border-radius: 10px;
         text-transform: uppercase;
-
         width: 100%;
       }
 
@@ -147,6 +154,89 @@
         width: 10%;
         display: flex;
         flex-direction: column;
+      }
+
+      footer {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 1.1),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/567/original/michel-caicedo-9cqLeJoS46w-unsplash.jpg?1686710452');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        margin: 0 auto;
+      }
+
+      /*Section */
+      #search {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 1)
+          ),
+          url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/571/original/corina-rainer-9FDI-_E29fk-unsplash.jpg?1686717607');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        margin: 0 auto;
+      }
+      .search_form {
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgb(221, 49, 49) 0%,
+          rgb(119, 0, 0) 90%
+        );
+        padding: 4rem;
+        width: 50%;
+        border-radius: 10px;
+      }
+
+      .search_form label {
+        margin-bottom: 10px;
+      }
+
+      /*Footer*/
+
+      .footer_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .footer_container li {
+        margin-top: 20px;
+        font-weight: 500;
+        text-align: start;
+      }
+
+      .social {
+        margin-top: 30px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: start;
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+      }
+
+      .social_info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: start;
+      }
+
+      .social_info h2 {
+        margin-right: 15px;
+        font-size: 40px;
+      }
+
+      .social_info i {
+        margin: 5px;
+        cursor: pointer;
       }
       /*Custom*/
       .section__padding {
@@ -321,6 +411,16 @@
         ul li {
           margin: 10px;
         }
+
+        .footer_container {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .social_info {
+          flex-direction: column;
+          margin: 5px;
+          font-size: 10px;
+        }
       }
 
       @media screen and (max-width: 650px) {
@@ -355,6 +455,14 @@
         .headtext__cormorant {
           font-size: 45px;
           line-height: 70px;
+        }
+
+        .footer_container {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .social_info h2 {
+          font-size: 20px;
         }
       }
 
@@ -401,10 +509,15 @@
             />
           </div>
           <div class="app__wrapper_info">
-            <h3 class="p__cormorant">COMING SOONG...</h3>
-            <h1 class="headtext__cormorant mt-[15px]">
-              TRAIN TO BUSAN: PENINSULA
-            </h1>
+            <div class="items-center flex flex-row">
+              <img
+                class="w-[40px]"
+                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/564/original/vecteezy_popcorn-box-ai-generative_23215419_784.png?1686708039"
+                alt="popcorn"
+              />
+              <h3 class="text-2xl p__cormorant">COMING SOON</h3>
+            </div>
+            <h1 class="headtext__cormorant">TRAIN TO BUSAN: PENINSULA</h1>
             <p class="p__opensans mt-[5px]">
               A zombie outbreak occurs in South Korea, where the government is
               overwhelmed in a day. Korea Marine Captain Jung-seok drives his
@@ -426,18 +539,100 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
+      <section id="search" class="search text-white app__wrapper">
+        <div>
+          <img
+            class="app__wrapper_img"
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/576/original/anne-hathaway-alice-in-wonderland-white-queen-the-mad-hatter-red-queen-anne-hathaway-81a923625f043dfd244a4b6572d99e97.png?1686718754"
+            alt="cinema-person"
+          />
+        </div>
+        <div class="flex flex-col search_form">
+          <h2 class="headtext__cormorant text-[20px]">
+            ENJOY YOUR FAVORITE MOVIE💑
+          </h2>
+          <label for="#">Find Movies/Series by title</label>
+          <form action="" class="flex flex-col">
+            <input class="text-black p-[2px]" type="search" id="search-input" />
+            <input
+              class="custom__button border-b-2 border-yellow-200"
+              type="submit" id="submit-input"
+            />
+          </form>
+        </div>
+      </section>
       <main class="">
         <div id="main-container">
-          <h3 class="p__cormorant text-[25px] border-l-4 border-yellow-200">
-            DISCOVER
-            <strong class="capitalize" id="category-title">HORROR</strong>
-          </h3>
+          <div class="flex flex-row items-center pl-[20px] mt-[15px]">
+            <img
+              class="w-20"
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/559/original/vecteezy_film-reel-3d-icon_20951151_877.png?1686706672"
+              alt="cinema"
+            />
+            <h3 class="p__cormorant text-[25px] border-b-2 border-yellow-200">
+              DISCOVER
+              <strong
+                class="capitalize text-3xl text-amber-400"
+                id="category-title"
+                >HORROR</strong
+              >
+            </h3>
+          </div>
           <div id="movies-categories" class="mt-[20px]">
             <div id="categories" class=""></div>
             <div id="layout" class="p-[10px]"></div>
           </div>
         </div>
       </main>
+      <footer class="section__padding">
+        <div class="footer_container items-center justify-evenly font">
+          <ul class="flex flex-col text-xs text-white font-thin">
+            <li class="text-sm font-medium">Our Network</li>
+            <li><a>FjS Cinema</a></li>
+            <li><a>OMBP Movies</a></li>
+            <li><a>FamilyShare</a></li>
+            <li><a>Become Part of Us</a></li>
+          </ul>
+          <ul class="flex flex-col text-xs text-white font-thin">
+            <li class="text-sm font-medium">Site Links</li>
+            <li><a>Help Center</a></li>
+            <li><a>FJSCA</a></li>
+            <li><a>Licensing Agreement</a></li>
+            <li><a>Popular Search Term</a></li>
+          </ul>
+          <ul class="flex flex-col text-xs text-white font-thin">
+            <li class="text-sm font-medium">Languages</li>
+            <li><a>English</a></li>
+            <li><a>Spanish</a></li>
+            <li><a>Portuguese</a></li>
+            <li><a>Deutsch</a></li>
+          </ul>
+          <ul class="flex flex-col text-xs text-white font-thin">
+            <li class="text-sm font-medium">About Us</li>
+            <li><a>Careers</a></li>
+            <li><a>Our Blog</a></li>
+            <li><a>Contact Us</a></li>
+            <li><a>Updates</a></li>
+          </ul>
+        </div>
+        <div class="social flex text-white">
+          <div class="social_info">
+            <h2><i class="fa-solid fa-film"></i>FJS CINEMA</h2>
+            <div class="flex flex-row">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-pinterest"></i>
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+          <div class="social_info">
+            <p>© 2023 Eezy Inc. All rights reserved •</p>
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </footer>
     </div>
     <script>
       let category = '';
@@ -506,7 +701,8 @@
       }
 
       let apiKey = '21cea9f7';
-      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=fantasy`;
+      let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=horror`;
+
       axios.get(apiURL).then(fetchingData);
 
       // Navbar
