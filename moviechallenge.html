@@ -205,6 +205,7 @@
 
       .search_form label {
         margin-bottom: 10px;
+        text-transform: lowercase;
       }
 
       /*Footer*/
@@ -486,11 +487,11 @@
       }
 
       ::-webkit-scrollbar {
-        height: 6px;
+        height: 7px;
       }
 
       ::-webkit-scrollbar-thumb {
-        background: var(--color-golden);
+        background: red;
       }
     </style>
   </head>
@@ -558,8 +559,11 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-      <section id="search" class="search text-white app__wrapper">
-        <div>
+      <section
+        id="search"
+        class="search text-white app__wrapper text-center justify-center"
+      >
+        <div class="">
           <img
             class="app__wrapper_img"
             src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/576/original/anne-hathaway-alice-in-wonderland-white-queen-the-mad-hatter-red-queen-anne-hathaway-81a923625f043dfd244a4b6572d99e97.png?1686718754"
@@ -577,14 +581,11 @@
               type="search"
               id="search-input"
             />
-            <input
-              class="custom__button border-b-2 border-yellow-200"
-              type="submit"
-              id="submit-input"
-            />
+            <button class="custom__button" id="submit-input">Submit</button>
           </form>
         </div>
       </section>
+      <section id="src-result"></section>
       <main class="">
         <div id="main-container">
           <div
@@ -690,16 +691,37 @@
           </div> `);
       });
 
-      // Getting value button
+      // Getting categories value button
       let btns_ = document.querySelectorAll('.btns');
       btns_.forEach(function (i) {
-        i.addEventListener('click', function (e) {
+        i.addEventListener('click', function (r) {
           e.preventDefault();
           title_category = i.value;
           title.innerHTML = title_category;
           fetchingCategories(i.value);
         });
       });
+
+      // searching by title - getting value of the form
+      let src_input = document.getElementById('search-input');
+      let sub_input = document.getElementById('submit-input');
+      let src_result = document.getElementById('src-result');
+
+      sub_input.addEventListener('click', function (e) {
+        e.preventDefault();
+        let x = src_input.value;
+        let apiKey = '21cea9f7';
+        let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${x}`;
+        axios.get(apiURL).then(() => {
+          if (index)
+        });
+      });
+
+      function fetchingResult(src) {
+        let apiKey = '21cea9f7';
+        let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${''}`;
+        axios.get(apiURL).then(fetchingData);
+      }
 
       //Fetching Categories Data
 
