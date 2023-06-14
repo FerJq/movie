@@ -129,7 +129,7 @@
         padding: 5px;
         border-radius: 10px;
         text-align: center;
-        background-color: #ffffff;
+        background-color: var(--color-golden);
       }
 
       #layout li img {
@@ -160,7 +160,7 @@
 
       .main-discover {
         display: flex;
-        background-color: rgb(35, 35, 35);
+        background-color: rgb(40, 40, 40);
         text-align: center;
         border-radius: 20px;
         justify-content: center;
@@ -211,13 +211,34 @@
       /*section result */
 
       #src-result {
-        padding: 2rem;
+        width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      #src-resul li {
-        
+      #src-result li {
+        max-width: 350px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #ca0000;
+      }
+
+      #src-result li h2 {
+        max-width: 150px;
+        align-items: center;
+      }
+
+      #src-result li img {
+        max-width: 200px;
+        border-radius: 12px;
       }
 
       /*Footer*/
@@ -723,8 +744,8 @@
             const poster = serie.Poster;
             const Type = serie.Type;
             const Year = serie.Year;
-            const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`;
-            if (i < 4) {
+            const movieLayout = `<li><img src=${poster}/> <h2 class='uppercase font-medium text-xs'>${name} - ${Year}</h2> </br><h6 class='font-bold uppercase'>${Type}</h6></li>`;
+            if (i < 5) {
               return (src_result.innerHTML += movieLayout);
             }
           });
