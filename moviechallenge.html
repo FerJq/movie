@@ -208,6 +208,18 @@
         text-transform: lowercase;
       }
 
+      /*section result */
+
+      #src-result {
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+      }
+
+      #src-resul li {
+        
+      }
+
       /*Footer*/
 
       .footer_container {
@@ -529,14 +541,6 @@
             />
           </div>
           <div class="app__wrapper_info">
-            <div class="items-center flex flex-row">
-              <img
-                class="w-[40px]"
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/564/original/vecteezy_popcorn-box-ai-generative_23215419_784.png?1686708039"
-                alt="popcorn"
-              />
-              <h3 class="text-2xl p__cormorant">COMING SOON</h3>
-            </div>
             <h1 class="headtext__cormorant">TRAIN TO BUSAN: PENINSULA</h1>
             <p class="p__opensans mt-[5px]">
               A zombie outbreak occurs in South Korea, where the government is
@@ -709,19 +713,24 @@
 
       sub_input.addEventListener('click', function (e) {
         e.preventDefault();
-        let x = src_input.value;
+        let x = src_input.value.toLowerCase();
         let apiKey = '21cea9f7';
         let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${x}`;
-        axios.get(apiURL).then(() => {
-          if (index)
+        axios.get(apiURL).then((r) => {
+          const data = r.data.Search;
+          data.map((serie, i) => {
+            const name = serie.Title;
+            const poster = serie.Poster;
+            const Type = serie.Type;
+            const Year = serie.Year;
+            const movieLayout = `<li><img src=${poster}/> <h2>${name} - ${Year}</h2> <br /> <h6>${Type}</h6></li>`;
+            if (i < 4) {
+              return (src_result.innerHTML += movieLayout);
+            }
+          });
         });
+        src_result.innerHTML = '';
       });
-
-      function fetchingResult(src) {
-        let apiKey = '21cea9f7';
-        let apiURL = `http://www.omdbapi.com/?apikey=${apiKey}&s=${''}`;
-        axios.get(apiURL).then(fetchingData);
-      }
 
       //Fetching Categories Data
 
