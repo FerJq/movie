@@ -126,7 +126,7 @@
         align-items: center;
         list-style: none;
         margin: 10px;
-        padding: 15px;
+        padding: 5px;
         border-radius: 10px;
         text-align: center;
         background-color: #ffffff;
@@ -156,6 +156,16 @@
         flex-direction: column;
       }
 
+      /*main*/
+
+      .main-discover {
+        display: flex;
+        background-color: rgb(35, 35, 35);
+        text-align: center;
+        border-radius: 20px;
+        justify-content: center;
+      }
+
       footer {
         background-image: linear-gradient(
             rgba(0, 0, 0, 1.1),
@@ -171,25 +181,25 @@
 
       /*Section */
       #search {
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.9),
-            rgba(0, 0, 0, 1)
-          ),
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1)),
           url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/571/original/corina-rainer-9FDI-_E29fk-unsplash.jpg?1686717607');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         color: white;
         margin: 0 auto;
+        padding: 2rem;
       }
       .search_form {
+        position: relative;
+        margin-top: 100px;
         background: radial-gradient(
           circle at 10% 20%,
           rgb(221, 49, 49) 0%,
           rgb(119, 0, 0) 90%
         );
         padding: 4rem;
-        width: 50%;
+        max-width: 80%;
         border-radius: 10px;
       }
 
@@ -438,6 +448,15 @@
         .p__opensans {
           font-size: 14px;
         }
+
+        #search {
+          padding: 0;
+        }
+
+        #search .headtext__cormorant {
+          font-size: 15px;
+          line-height: 1.5;
+        }
       }
 
       @media screen and (max-width: 450px) {
@@ -553,17 +572,24 @@
           </h2>
           <label for="#">Find Movies/Series by title</label>
           <form action="" class="flex flex-col">
-            <input class="text-black p-[2px]" type="search" id="search-input" />
+            <input
+              class="text-black p-[2px] w-full"
+              type="search"
+              id="search-input"
+            />
             <input
               class="custom__button border-b-2 border-yellow-200"
-              type="submit" id="submit-input"
+              type="submit"
+              id="submit-input"
             />
           </form>
         </div>
       </section>
       <main class="">
         <div id="main-container">
-          <div class="flex flex-row items-center pl-[20px] mt-[15px]">
+          <div
+            class="flex flex-row items-center pl-[20px] mt-[15px] main-discover"
+          >
             <img
               class="w-20"
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/085/559/original/vecteezy_film-reel-3d-icon_20951151_877.png?1686706672"
@@ -587,28 +613,28 @@
       <footer class="section__padding">
         <div class="footer_container items-center justify-evenly font">
           <ul class="flex flex-col text-xs text-white font-thin">
-            <li class="text-sm font-medium">Our Network</li>
+            <li class="text-sm font-medium text-red-600">Our Network</li>
             <li><a>FjS Cinema</a></li>
             <li><a>OMBP Movies</a></li>
             <li><a>FamilyShare</a></li>
             <li><a>Become Part of Us</a></li>
           </ul>
           <ul class="flex flex-col text-xs text-white font-thin">
-            <li class="text-sm font-medium">Site Links</li>
+            <li class="text-sm font-medium text-red-600">Site Links</li>
             <li><a>Help Center</a></li>
             <li><a>FJSCA</a></li>
             <li><a>Licensing Agreement</a></li>
             <li><a>Popular Search Term</a></li>
           </ul>
           <ul class="flex flex-col text-xs text-white font-thin">
-            <li class="text-sm font-medium">Languages</li>
+            <li class="text-sm font-medium text-red-600">Languages</li>
             <li><a>English</a></li>
             <li><a>Spanish</a></li>
             <li><a>Portuguese</a></li>
             <li><a>Deutsch</a></li>
           </ul>
           <ul class="flex flex-col text-xs text-white font-thin">
-            <li class="text-sm font-medium">About Us</li>
+            <li class="text-sm font-medium text-red-600">About Us</li>
             <li><a>Careers</a></li>
             <li><a>Our Blog</a></li>
             <li><a>Contact Us</a></li>
@@ -617,13 +643,13 @@
         </div>
         <div class="social flex text-white">
           <div class="social_info">
-            <h2><i class="fa-solid fa-film"></i>FJS CINEMA</h2>
+            <h2><i class="fa-solid fa-film text-red-600"></i>FJS CINEMA</h2>
             <div class="flex flex-row">
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-twitter"></i>
-              <i class="fa-brands fa-pinterest"></i>
-              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-brands fa-facebook text-red-600"></i>
+              <i class="fa-brands fa-instagram text-red-600"></i>
+              <i class="fa-brands fa-twitter text-red-600"></i>
+              <i class="fa-brands fa-pinterest text-red-600"></i>
+              <i class="fa-brands fa-youtube text-red-600"></i>
             </div>
           </div>
           <div class="social_info">
