@@ -116,6 +116,7 @@
       }
 
       #layout {
+        color: white;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -124,14 +125,13 @@
       #layout li {
         display: flex;
         flex-direction: column;
-        flex: 1;
         align-items: center;
         list-style: none;
         margin: 10px;
         padding: 5px;
         border-radius: 10px;
         text-align: center;
-        background-color: var(--color-golden);
+        background-color: red;
       }
 
       #layout li img {
@@ -141,7 +141,7 @@
 
       #layout li h2 {
         font-weight: 700;
-        color: black;
+        color: rgb(255, 255, 255);
         font-size: 1em;
         padding: 5px 10px 0;
         margin-top: auto;
@@ -528,9 +528,56 @@
       ::-webkit-scrollbar-thumb {
         background: red;
       }
+
+      /*LOGO ANIMATION */
+      .logo {
+        position: relative;
+        font-size: 6em;
+        color: #660303;
+        text-align: center;
+        -webkit-box-reflect: below 0.5px
+          linear-gradient(transparent, rgba(0, 0, 0, 0.186));
+        line-height: 0.7em;
+        outline: none;
+        animation: animate 5s linear infinite;
+      }
+
+      @keyframes animate {
+        0%,
+        18%,
+        20%,
+        50.1%,
+        60%,
+        65.1%,
+        80%,
+        90.1%,
+        92% {
+          color: #660303;
+          text-shadow: none;
+        }
+        18.1%,
+        20.1%,
+        30%,
+        50%,
+        60.1%,
+        65%,
+        80.1%,
+        90%,
+        92.1%,
+        100% {
+          color: #fff;
+          text-shadow: 0 0 10px #ff1616, 0 0 20px #ff1616, 0 0 40px #ff1616,
+            0 0 80px #ff1616, 0 0 160px #ff1616;
+        }
+      }
     </style>
   </head>
   <body class="bg-black">
+    <div class="text-white text-center mt-[30px]">
+      <h2 class="logo">
+        <i class="fa-solid fa-film text-white"></i>FjS CINEMA
+      </h2>
+    </div>
     <div id="container">
       <div class="nav-bar section__padding">
         <div class="hamburger">
